@@ -1,6 +1,6 @@
 {
-    "Watch": ["src"],
+    "watch": ["src"],
     "ext": "ts",
-    "ignore": ["src/**/*.spec.ts"],
+    "ignore": ["src/**/*.spec.ts", "dist/*"],
     "exec": "nest start"
 }
