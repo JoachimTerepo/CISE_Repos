@@ -10,7 +10,7 @@ function ShowBookDetails() {
   const navigate = useRouter();
 
   useEffect(() => {
-    fetch(`http://localhost:8082/api/books/${id}`)
+    fetch('process.env.NEXT_PUBLIC_BACKEND_URL + `/api/books/${id}`')
       .then((res) => res.json())
       .then((json) => setBook(json))
       .catch((err) => {
@@ -19,7 +19,7 @@ function ShowBookDetails() {
   }, [id]);
 
   const onDeleteClick = (id: string) => {
-    fetch(`http://localhost:8082/api/books/${id}`, { method: 'DELETE' })
+    fetch('process.env.NEXT_PUBLIC_BACKEND_URL + `/api/books/${id}`', { method: 'DELETE' })
       .then(() => {
         navigate.push('/');
       })
