@@ -7,8 +7,9 @@ export type Book = {
     published_date?: Date;
     publisher?: string;
     updated_date?: Date;
-    };
-    export const DefaultEmptyBook: Book = {
+  };
+  
+  export const DefaultEmptyBook: Book = {
     _id: undefined,
     title: '',
     isbn: '',
@@ -17,4 +18,5 @@ export type Book = {
     published_date: undefined,
     publisher: '',
     updated_date: undefined,
-    }    
+  };
+  

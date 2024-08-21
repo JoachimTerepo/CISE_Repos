@@ -5,15 +5,7 @@ import { Book, DefaultEmptyBook } from "./Book";
 
 const CreateBookComponent = () => {
   const navigate = useRouter();
-  const [book, setBook] = useState<Book>({
-    ...DefaultEmptyBook,
-    title: DefaultEmptyBook.title || '',
-    isbn: DefaultEmptyBook.isbn || '',
-    author: DefaultEmptyBook.author || '',
-    description: DefaultEmptyBook.description || '',
-    published_date: DefaultEmptyBook.published_date ? new Date(DefaultEmptyBook.published_date) : undefined,
-    publisher: DefaultEmptyBook.publisher || '',
-  });
+  const [book, setBook] = useState<Book>(DefaultEmptyBook);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setBook({ ...book, [event.target.name]: event.target.value });
@@ -21,8 +13,7 @@ const CreateBookComponent = () => {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(book);
-    fetch("http://localhost:8082/api/books", {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/books`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(book),
@@ -116,10 +107,7 @@ const CreateBookComponent = () => {
                   onChange={onChange}
                 />
               </div>
-              <button
-                type="submit"
-                className="btn btn-outline-warning btn-block mt-4 mb-4 w-100"
-              >
+              <button type="submit" className="btn btn-outline-warning btn-block mt-4 mb-4 w-100">
                 Submit
               </button>
             </form>
